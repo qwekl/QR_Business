@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     ViewFlipper Vf;
     Button BtnSignIn;
     TextView BtnSignUp;
-    EditText inputID, inputPW;
+    EditText inputID, inputPW,inputCODE;
     HttpPost httppost;
     StringBuffer buffer;
     org.apache.http.HttpResponse response;
@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         BtnSignIn = (Button)findViewById(R.id.btn_signin);
         inputID = (EditText)findViewById(R.id.user_id);
         inputPW = (EditText)findViewById(R.id.user_pw);
+        inputCODE = (EditText)findViewById(R.id.user_code);
 
         BtnSignIn.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -71,10 +72,11 @@ public class LoginActivity extends AppCompatActivity {
     void login() {
         try {
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://sola0722.cafe24.com/login.php");
+            httppost = new HttpPost("http://sola0722.cafe24.com/LoginCompany.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("id", inputID.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("password", inputPW.getText().toString()));
+            nameValuePairs.add(new BasicNameValuePair("code", inputCODE.getText().toString()));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             response = httpclient.execute(httppost);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -98,7 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                intent.putExtra("code",inputID.getText().toString());
+                intent.putExtra("companyid",inputID.getText().toString());
+                intent.putExtra("code",inputCODE.getText().toString());
                 startActivity(intent);
                 finish();
             } else {
