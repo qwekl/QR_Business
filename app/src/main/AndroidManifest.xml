@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.byunchangbin.business">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="주문다모아"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.byunchangbin.business.LoginActivity">
+
+        </activity>
+        <activity
+            android:name="com.example.byunchangbin.business.RegisterActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.MainActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.MenuActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.NoticeActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.UploadImageActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.UploadMenuActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.UploadNoticeActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.OrdersActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name=".MenuPopUpActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name=".NoticePopupActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+    </application>
+
+</manifest>

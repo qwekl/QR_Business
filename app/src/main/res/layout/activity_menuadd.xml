@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/menu_upload_activity"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="18dp"
+            android:paddingTop="18dp"
+            android:paddingRight="18dp"
+            android:paddingLeft="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="메뉴 등록하기"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:paddingBottom="20dp"/>
+
+            <EditText
+                android:id="@+id/menu_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="메뉴 이름" />
+
+            <EditText
+                android:id="@+id/menu_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="가격" />
+
+            <EditText
+                android:id="@+id/menu_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="메뉴에 대한 설명" />
+
+            <EditText
+                android:id="@+id/menu_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="기업코드"
+                />
+
+            <Button
+                android:id="@+id/upload_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미지 불러오기"
+                android:textSize="18dp"
+                android:background ="#747474"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/registerButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="등록하기"
+                android:textSize="18dp"
+                android:background ="#747474"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:textColor="#FFFFFF"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal ="true"
+            android:layout_marginTop="300dp"
+            />
+    </RelativeLayout>
+
+</ScrollView>
