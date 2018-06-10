@@ -44,6 +44,8 @@ public class OrdersActivity extends AppCompatActivity {
         ordersListView.setAdapter(adapter);
         PushButton = (Button)findViewById(R.id.push_message);
 
+        code = getIntent().getStringExtra("code");
+
 
         //주문 목록 클레스 접근
         new OrdersActivity.BackgroundTask().execute();
@@ -52,8 +54,9 @@ public class OrdersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(OrdersActivity.this, OrdersPopUpActivity.class);
-                intent.putExtra("Userid",ordersList.get(position).getUserid());
+                intent.putExtra("userid",ordersList.get(position).getUserid());
                 intent.putExtra("phonenember",ordersList.get(position).getPhonenumber());
+                intent.putExtra("menuname",ordersList.get(position).getMenuname());
                 intent.putExtra("code",code);
                 startActivityForResult(intent,1);
             }

@@ -62,8 +62,9 @@ public class OrdersPopUpActivity extends AppCompatActivity {
                 String t = txtText.getText().toString();
                 intent1.putExtra("sms_body", t);
                 startActivity(intent1);
-                Toast.makeText(getApplicationContext(),"전송이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"전송버튼을 눌러 주세요.", Toast.LENGTH_LONG).show();
                 //액티비티(팝업) 닫기
+                new OrdersDelete().execute();
                 finish();
             }
         });
@@ -88,22 +89,26 @@ public class OrdersPopUpActivity extends AppCompatActivity {
         return;
     }
 
-    //선택 메뉴 지우기
-    class ShoppingDelete extends AsyncTask<Void, Void, String> {
+    //주문 왕료 메뉴 지우기
+    class OrdersDelete extends AsyncTask<Void, Void, String> {
 
         String target;
-        String code = getIntent().getStringExtra("code");
+        String menuname = getIntent().getStringExtra("menuname");
         String userid = getIntent().getStringExtra("userid");
+        String code = getIntent().getStringExtra("code");
+
+
 
         @Override
         protected void onPreExecute(){
-            target = "http://sola0722.cafe24.com/OrdersDelete.php?userid=";
+            target = "http://sola0722.cafe24.com/OrdersDelete.php?menuname=";
         }
 
         @Override
         protected String doInBackground(Void... voids) {
             try{
-                URL url = new URL(target+"&userid="+userid);
+                System.out.println(menuname+userid+code);
+                URL url = new URL(target + menuname +"&userid=" + userid + "&code=" + code);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
