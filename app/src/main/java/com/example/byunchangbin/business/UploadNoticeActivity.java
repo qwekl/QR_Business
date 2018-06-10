@@ -21,10 +21,7 @@ public class UploadNoticeActivity extends AppCompatActivity {
 
     private static String TAG = "phptest_UploadNoticeActivity";
 
-    private EditText NoticeTitle;
-    private EditText NoticeName;
-    private EditText NoticeDate;
-    private EditText NoticeCompanyId;
+    private EditText NoticeTitle,NoticeName,NoticeDate,NoticeDetail;
     private Button UploaderButton;
     private Button RegisterButton3;
 
@@ -36,9 +33,11 @@ public class UploadNoticeActivity extends AppCompatActivity {
         NoticeTitle = (EditText)findViewById(R.id.notice_title);
         NoticeName = (EditText)findViewById(R.id.notice_name);
         NoticeDate = (EditText)findViewById(R.id.notice_date);
-        NoticeCompanyId = (EditText)findViewById(R.id.notice_code);
-
+        NoticeDetail = (EditText)findViewById(R.id.notice_detail);
         RegisterButton3= (Button)findViewById(R.id.registerButton3);
+
+
+        final String code = getIntent().getStringExtra("code");
 
         RegisterButton3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,15 +45,16 @@ public class UploadNoticeActivity extends AppCompatActivity {
                 String title = NoticeTitle.getText().toString();
                 String name = NoticeName.getText().toString();
                 String date = NoticeDate.getText().toString();
-                String companyid = NoticeCompanyId.getText().toString();
+                String detail = NoticeDetail.getText().toString();
+                String companyid = code;
 
                 InsertData take = new InsertData();
-                take.execute(title,name,date,companyid);
+                take.execute(title,name,date,detail,companyid);
 
                 NoticeTitle.setText("");
                 NoticeName.setText("");
                 NoticeDate.setText("");
-                NoticeCompanyId.setText("");
+                NoticeDetail.setText("");
             }
         });
 
@@ -100,10 +100,12 @@ public class UploadNoticeActivity extends AppCompatActivity {
             String title = (String)params[0];
             String name = (String)params[1];
             String date = (String)params[2];
-            String companyid = (String)params[3];
+            String detail = (String)params[3];
+            String companyid = (String)params[4];
+
 
             String serverURL = "http://sola0722.cafe24.com/UploadNotice.php";
-            String postParameters = "&title=" + title + "&name=" + name + "&date=" + date + "&companyid=" + companyid ;
+            String postParameters = "&title=" + title + "&name=" + name + "&date=" + date + "&detail=" + detail + "&companyid=" + companyid ;
 
 
             try {

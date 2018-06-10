@@ -1,8 +1,12 @@
 package com.example.byunchangbin.business;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -21,7 +25,7 @@ import java.util.List;
  */
 
 public class OrdersActivity extends AppCompatActivity {
-    //private Button OrdersButton;
+    private Button PushButton;
     private OrdersListAdapter adapter;
     private List<OrdersList> ordersList;
     private ListView ordersListView;
@@ -31,18 +35,29 @@ public class OrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setTitle("주문현황");
         setContentView(R.layout.activity_orders);
 
         ordersListView = (ListView)findViewById(R.id.listView);
         ordersList = new ArrayList<OrdersList>();
         adapter = new OrdersListAdapter(getApplicationContext(),ordersList);
         ordersListView.setAdapter(adapter);
-       // OrdersButton = (Button)findViewById(R.id.orderslist);
+        PushButton = (Button)findViewById(R.id.push_message);
 
 
         //주문 목록 클레스 접근
         new OrdersActivity.BackgroundTask().execute();
 
+       ordersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(OrdersActivity.this, OrdersPopUpActivity.class);
+                intent.putExtra("Userid",ordersList.get(position).getUserid());
+                intent.putExtra("phonenember",ordersList.get(position).getPhonenumber());
+                intent.putExtra("code",code);
+                startActivityForResult(intent,1);
+            }
+        });
     }
 
     //서버에서 메뉴 불러오기
@@ -89,14 +104,15 @@ public class OrdersActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int counter = 0;
-                String menuname,price, count,userid;
+                String menuname,price, count,userid,phonenumber;
                 while (counter < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(counter);
                     menuname = object.getString("menuname");
                     price = object.getString("price");
                     count = object.getString("count");
                     userid= object.getString("userid");
-                    OrdersList orders = new OrdersList(menuname,price,count,userid);
+                    phonenumber= object.getString("phonenumber");
+                    OrdersList orders = new OrdersList(menuname,price,count,userid,phonenumber);
                     ordersList.add(orders);
                     adapter.notifyDataSetChanged();
                     counter++;

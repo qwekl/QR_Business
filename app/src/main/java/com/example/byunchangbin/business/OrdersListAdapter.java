@@ -40,12 +40,14 @@ public class OrdersListAdapter extends BaseAdapter {
         TextView orders_priceText = (TextView)v.findViewById(R.id.orderpriceText);
         TextView orders_countText = (TextView)v.findViewById(R.id.ordercountText);
         TextView orders_useridText = (TextView)v.findViewById(R.id.orderuserID);
+        TextView orders_userphonenumberText = (TextView)v.findViewById(R.id.orderuserPhoneNumber);
 
 
         order_menunameText.setText(ordersList.get(i).getMenuname());
         orders_priceText.setText(ordersList.get(i).getPrice());
         orders_countText.setText(ordersList.get(i).getCount());
         orders_useridText.setText(ordersList.get(i).getUserid());
+        orders_userphonenumberText.setText(ordersList.get(i).getPhonenumber());
 
         v.setTag(ordersList.get(i).getMenuname());
         return v;

@@ -35,6 +35,7 @@ public class NoticeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setTitle("공지사항");
         setContentView(R.layout.activity_notice);
 
         noticeListView = (ListView)findViewById(R.id.listView);
@@ -64,6 +65,7 @@ public class NoticeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NoticeActivity.this, UploadNoticeActivity.class);
+                intent.putExtra("code",code);
                 startActivity(intent);
             }
         });

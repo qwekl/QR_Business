@@ -9,12 +9,14 @@ public class OrdersList {
     String price;
     String count;
     String userid;
+    String phonenumber;
 
-    public OrdersList(String menuname, String price, String count, String userid) {
+    public OrdersList(String menuname, String price, String count, String userid, String phonenumber) {
         this.menuname = menuname;
         this.price = price;
         this.count = count;
         this.userid = userid;
+        this.phonenumber = phonenumber;
     }
 
     public String getMenuname() {
@@ -43,6 +45,14 @@ public class OrdersList {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
 

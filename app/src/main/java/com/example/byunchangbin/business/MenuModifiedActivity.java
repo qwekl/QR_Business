@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -68,6 +69,8 @@ public class MenuModifiedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new MenuModified().execute();
+                Toast toast = Toast.makeText(MenuModifiedActivity.this,"수정되었습니다.",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 

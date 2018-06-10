@@ -1,5 +1,6 @@
 package com.example.byunchangbin.business;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -24,9 +26,10 @@ public class UploadMenuActivity extends AppCompatActivity {
     private EditText MenuName;
     private EditText MenuPrice;
     private EditText MenuDescription;
-    private EditText MenuCompanyId;
     private Button UploaderButton;
     private Button RegisterButton2;
+    private Toast toast;
+    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +39,13 @@ public class UploadMenuActivity extends AppCompatActivity {
         MenuName = (EditText)findViewById(R.id.menu_name);
         MenuPrice = (EditText)findViewById(R.id.menu_price);
         MenuDescription = (EditText)findViewById(R.id.menu_description);
-        MenuCompanyId = (EditText)findViewById(R.id.menu_code);
-
         RegisterButton2= (Button)findViewById(R.id.registerButton2);
         UploaderButton = (Button)findViewById(R.id.upload_button);
+
+        final String code = getIntent().getStringExtra("code");
+
+
+
 
 
         UploaderButton.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +62,8 @@ public class UploadMenuActivity extends AppCompatActivity {
                 String menuname = MenuName.getText().toString();
                 String menuprice = MenuPrice.getText().toString();
                 String menudescription = MenuDescription.getText().toString();
-                String menucompanyid = MenuCompanyId.getText().toString();
+                String menucompanyid = code;
+
 
                 InsertData take = new InsertData();
                 take.execute(menuname,menuprice,menudescription,menucompanyid);
@@ -64,7 +71,6 @@ public class UploadMenuActivity extends AppCompatActivity {
                 MenuName.setText("");
                 MenuPrice.setText("");
                 MenuDescription.setText("");
-                MenuCompanyId.setText("");
             }
         });
 

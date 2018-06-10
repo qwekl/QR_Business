@@ -4,11 +4,16 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" > </uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS" > </uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" > </uses-permission>
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="주문다모아"
+        android:label="주문다모아-사업자"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -55,6 +60,12 @@
         <activity
             android:name=".NoticePopupActivity"
             android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name=".OrdersPopUpActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name="com.example.byunchangbin.business.MenuModifiedActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
     </application>
 
 </manifest>

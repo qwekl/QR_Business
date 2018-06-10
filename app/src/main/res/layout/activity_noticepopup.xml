@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="삭제하시겠습니까?"
+            android:text="상품이 준비되었습니까?"
             android:textSize="20sp"
             android:textColor="#fff"
             android:gravity="center"

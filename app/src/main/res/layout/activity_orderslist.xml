@@ -64,11 +64,53 @@
 
                 </LinearLayout>
         </LinearLayout>
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="주문자ID"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/orderuserID" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="주문자ID"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text=""
+                android:layout_marginLeft="15dp"
+                android:id="@+id/orderuserID" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Phone Number"
+                android:layout_marginLeft="15dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text=""
+                android:layout_marginLeft="15dp"
+                android:id="@+id/orderuserPhoneNumber" />
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 </LinearLayout>

@@ -34,6 +34,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setTitle("메뉴목록");
         setContentView(R.layout.activity_menu);
 
         menuListView = (ListView)findViewById(R.id.listView);
@@ -50,8 +51,12 @@ public class MenuActivity extends AppCompatActivity {
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MenuActivity.this, MenuPopUpActivity.class);
+                Intent intent = new Intent(MenuActivity.this, MenuModifiedActivity.class);
                 intent.putExtra("menuname", menuList.get(position).getMenuname());
+                intent.putExtra("menuid", menuList.get(position).getMenuid());
+                intent.putExtra("menuprice", menuList.get(position).getPrice());
+                intent.putExtra("filename", menuList.get(position).getFilename());
+                intent.putExtra("description", menuList.get(position).getDescription());
                 intent.putExtra("code",code);
                 startActivityForResult(intent,1);
             }
@@ -115,13 +120,15 @@ public class MenuActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
-                String menuname, price, menuid;
+                String menuname, price, menuid,filename,description;
                 while (count < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(count);
                     menuname = object.getString("menuname");
                     price = object.getString("price");
                     menuid = object.getString("menuid");
-                    MenuList menu = new MenuList(menuname,price,menuid);
+                    filename = object.getString("filename");
+                    description = object.getString("description");
+                    MenuList menu = new MenuList(menuname,price,menuid,filename,description);
                     menuList.add(menu);
                     adapter.notifyDataSetChanged();
                     count++;

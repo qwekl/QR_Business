@@ -1,6 +1,7 @@
 package com.example.byunchangbin.business;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import java.net.URL;
 
 public class OrdersPopUpActivity extends AppCompatActivity {
     private Button cancelButton, deleteButton;
-    private TextView txtText;
+    private TextView txtphonenumberText,txtText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,15 @@ public class OrdersPopUpActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_orderspopup);
 
+        txtphonenumberText = (TextView)findViewById(R.id.txtphonenumberText);
         txtText = (TextView)findViewById(R.id.txtText);
         cancelButton = (Button)findViewById(R.id.cancelButton);
         deleteButton = (Button)findViewById(R.id.deleteButton);
+        System.out.println(getIntent().getStringExtra("phonenember"));
 
         final String code = getIntent().getStringExtra("code");
-        txtText.setText(getIntent().getStringExtra("userid"));
+        final String phonenember = getIntent().getStringExtra("phonenember");
+        txtphonenumberText.setText(phonenember);
 
         // 팝업 취소 버튼
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -47,16 +51,18 @@ public class OrdersPopUpActivity extends AppCompatActivity {
             }
         });
 
-        //팝업 메뉴 삭제 버튼
+        //팝업 메뉴 버튼
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ShoppingDelete().execute();
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
-                Toast.makeText(getApplicationContext(),"확인 되었습니다.", Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(OrdersPopUpActivity.this, PushMessage.class);
+                Uri n = Uri.parse("smsto: " + txtphonenumberText.getText());
+                Intent intent1 = new Intent(Intent.ACTION_SENDTO, n);
+                String t = txtText.getText().toString();
+                intent1.putExtra("sms_body", t);
                 startActivity(intent1);
+                Toast.makeText(getApplicationContext(),"전송이 완료되었습니다.", Toast.LENGTH_LONG).show();
                 //액티비티(팝업) 닫기
                 finish();
             }
