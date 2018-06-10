@@ -81,22 +81,24 @@ public class NoticePopupActivity extends AppCompatActivity {
         return;
     }
 
+
+
     //선택 메뉴 지우기
     class NoticeDelete extends AsyncTask<Void, Void, String> {
 
         String target;
-        String code = getIntent().getStringExtra("code");
-        String title = getIntent().getStringExtra("title");
+        String noticeid = getIntent().getStringExtra("noticeid");
+
 
         @Override
         protected void onPreExecute(){
-            target = "http://sola0722.cafe24.com/NoticeDelete.php?title=";
+            target = "http://sola0722.cafe24.com/NoticeDelete.php?id=";
         }
 
         @Override
         protected String doInBackground(Void... voids) {
             try{
-                URL url = new URL(target+title+"&code="+code);
+                URL url = new URL(target+noticeid);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

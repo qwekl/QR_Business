@@ -69,6 +69,10 @@
         <activity
             android:name="com.example.byunchangbin.business.SalseActivity"
             android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+        <activity
+            android:name="com.example.byunchangbin.business.NoticeModifiedActivity"
+            android:parentActivityName="com.example.byunchangbin.business.LoginActivity" />
+
     </application>
 
 </manifest>

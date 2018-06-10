@@ -51,9 +51,12 @@ public class NoticeActivity extends AppCompatActivity {
 
         noticeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(NoticeActivity.this, NoticePopupActivity.class);
-                intent.putExtra("title",noticeList.get(position).getTitle());
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                Intent intent = new Intent(NoticeActivity.this, NoticeModifiedActivity.class);
+                intent.putExtra("title", noticeList.get(i).getTitle());
+                intent.putExtra("name", noticeList.get(i).getName());
+                intent.putExtra("datecreated", noticeList.get(i).getDatecreated());
+                intent.putExtra("noticeid", noticeList.get(i).getNoticeid());
                 intent.putExtra("code",code);
                 startActivityForResult(intent,1);
             }
@@ -80,7 +83,7 @@ class BackgroundTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPreExecute(){
-        target = "http://sola0722.cafe24.com/CompanyNotice.php?code="+code;}
+        target = "http://sola0722.cafe24.com/Notice.php?companyid="+code;}
 
     @Override
     protected String doInBackground(Void... voids) {
@@ -116,13 +119,14 @@ class BackgroundTask extends AsyncTask<Void, Void, String> {
             JSONObject jsonObject = new JSONObject(result);
             JSONArray jsonArray = jsonObject.getJSONArray("response");
             int count = 0;
-            String title,name,date;
+            String noticeid, title, name, datecreated;
             while (count < jsonArray.length()){
                 JSONObject object = jsonArray.getJSONObject(count);
+                noticeid = object.getString("id");
                 title = object.getString("title");
                 name = object.getString("name");
-                date = object.getString("datecreated");
-                NoticeList notice = new NoticeList(title,name,date);
+                datecreated = object.getString("datecreated");
+                NoticeList notice = new NoticeList(noticeid,title,name,datecreated);
                 noticeList.add(notice);
                 adapter.notifyDataSetChanged();
                 count++;

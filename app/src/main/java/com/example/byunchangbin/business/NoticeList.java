@@ -5,15 +5,24 @@ package com.example.byunchangbin.business;
  */
 
 public class NoticeList {
+    String noticeid;
     String title;
     String name;
-    String date;
+    String datecreated;
 
-    public NoticeList(String title, String name, String date) {
+    public NoticeList(String noticeid , String title, String name, String datecreated) {
+        this.noticeid = noticeid;
         this.title = title;
         this.name = name;
-        this.date = date;
+        this.datecreated = datecreated;
+    }
 
+    public String getNoticeid() {
+        return noticeid;
+    }
+
+    public void setNoticeid(String noticeid) {
+        this.noticeid = noticeid;
     }
 
     public String getTitle() {
@@ -32,9 +41,11 @@ public class NoticeList {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
+    public String getDatecreated() {
+        return datecreated;
     }
 
-    public void setDate(String date) {this.date = date; }
+    public void setDatecreated(String datecreated) {
+        this.datecreated = datecreated;
+    }
 }

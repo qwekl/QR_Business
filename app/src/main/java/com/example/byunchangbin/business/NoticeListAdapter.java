@@ -43,7 +43,7 @@ public class NoticeListAdapter extends BaseAdapter {
 
         noticetitleText.setText(noticeList.get(i).getTitle());
         noticenameText.setText(noticeList.get(i).getName());
-        noticedateText.setText(noticeList.get(i).getDate());
+        noticedateText.setText(noticeList.get(i).getDatecreated());
 
         v.setTag(noticeList.get(i).getTitle());
         return v;
