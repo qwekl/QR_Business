@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
         salseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MainActivity.this, OrdersActivity.class);
-                //intent.putExtra("code",code);
-                //startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, SalseActivity.class);
+                intent.putExtra("code",code);
+                startActivity(intent);
             }
         });
 

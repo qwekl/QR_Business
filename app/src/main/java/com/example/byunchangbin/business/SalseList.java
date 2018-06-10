@@ -1,10 +1,6 @@
 package com.example.byunchangbin.business;
 
-/**
- * Created by byunchangbin on 2018-06-06.
- */
-
-public class OrdersList {
+public class SalseList {
     String id;
     String menuname;
     String price;
@@ -12,7 +8,7 @@ public class OrdersList {
     String userid;
     String phonenumber;
 
-    public OrdersList(String id, String menuname, String price, String count, String userid, String phonenumber) {
+    public SalseList(String id, String menuname, String price, String count, String userid, String phonenumber) {
         this.id = id;
         this.menuname = menuname;
         this.price = price;

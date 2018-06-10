@@ -48,12 +48,13 @@ public class OrdersActivity extends AppCompatActivity {
 
 
         //주문 목록 클레스 접근
-        new OrdersActivity.BackgroundTask().execute();
+        new BackgroundTask().execute();
 
        ordersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(OrdersActivity.this, OrdersPopUpActivity.class);
+                intent.putExtra("id",ordersList.get(position).getId());
                 intent.putExtra("userid",ordersList.get(position).getUserid());
                 intent.putExtra("phonenember",ordersList.get(position).getPhonenumber());
                 intent.putExtra("menuname",ordersList.get(position).getMenuname());
@@ -107,15 +108,16 @@ public class OrdersActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int counter = 0;
-                String menuname,price, count,userid,phonenumber;
+                String id,menuname,price, count,userid,phonenumber;
                 while (counter < jsonArray.length()){
                     JSONObject object = jsonArray.getJSONObject(counter);
+                    id = object.getString("id");
                     menuname = object.getString("menuname");
                     price = object.getString("price");
                     count = object.getString("count");
                     userid= object.getString("userid");
                     phonenumber= object.getString("phonenumber");
-                    OrdersList orders = new OrdersList(menuname,price,count,userid,phonenumber);
+                    OrdersList orders = new OrdersList(id,menuname,price,count,userid,phonenumber);
                     ordersList.add(orders);
                     adapter.notifyDataSetChanged();
                     counter++;

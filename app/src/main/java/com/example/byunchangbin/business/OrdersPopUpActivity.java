@@ -51,10 +51,11 @@ public class OrdersPopUpActivity extends AppCompatActivity {
             }
         });
 
-        //팝업 메뉴 버튼
+        //팝업 주문 확인 버튼
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new Salse().execute();
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
                 Uri n = Uri.parse("smsto: " + txtphonenumberText.getText());
@@ -89,7 +90,7 @@ public class OrdersPopUpActivity extends AppCompatActivity {
         return;
     }
 
-    //주문 왕료 메뉴 지우기
+    //주문 완료 메뉴 지우기
     class OrdersDelete extends AsyncTask<Void, Void, String> {
 
         String target;
@@ -126,6 +127,51 @@ public class OrdersPopUpActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void...values){
+            super.onProgressUpdate();
+        }
+        @Override
+        public void onPostExecute(String result){
+        }
+    }
+
+    //매출 목록으로 전송 클래스
+    class Salse extends AsyncTask<Void, Void, String> {
+
+        String target;
+        String id = getIntent().getStringExtra("id");
+
+
+        @Override
+        protected void onPreExecute(){
+            target = "http://sola0722.cafe24.com/SalseList.php?id="+id;
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try{
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((temp = bufferedReader.readLine()) != null){
+                    stringBuilder.append(temp + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
             return null;
         }
