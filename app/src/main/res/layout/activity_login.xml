@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="메뉴다모아"
+                android:text="다모아"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:textStyle="bold"

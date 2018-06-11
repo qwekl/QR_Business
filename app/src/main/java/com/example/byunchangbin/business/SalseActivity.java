@@ -158,7 +158,7 @@ public class SalseActivity extends AppCompatActivity {
                     price = object.getString("price");
                     counter++;
                 }
-                textSalse.setText(price);
+                textSalse.setText(price + "원");
             }catch (Exception e){
                 e.printStackTrace();
             }

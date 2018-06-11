@@ -23,9 +23,7 @@ public class UploadMenuActivity extends AppCompatActivity {
 
     private static String TAG = "phptest_UploadMenuActivity";
 
-    private EditText MenuName;
-    private EditText MenuPrice;
-    private EditText MenuDescription;
+    private EditText MenuName,MenuPrice,MenuDescription,MenuFilename;
     private Button UploaderButton;
     private Button RegisterButton2;
     private Toast toast;
@@ -39,6 +37,7 @@ public class UploadMenuActivity extends AppCompatActivity {
         MenuName = (EditText)findViewById(R.id.menu_name);
         MenuPrice = (EditText)findViewById(R.id.menu_price);
         MenuDescription = (EditText)findViewById(R.id.menu_description);
+        MenuFilename = (EditText)findViewById(R.id.menu_filename);
         RegisterButton2= (Button)findViewById(R.id.registerButton2);
         UploaderButton = (Button)findViewById(R.id.upload_button);
 
@@ -62,15 +61,17 @@ public class UploadMenuActivity extends AppCompatActivity {
                 String menuname = MenuName.getText().toString();
                 String menuprice = MenuPrice.getText().toString();
                 String menudescription = MenuDescription.getText().toString();
+                String menufilename = MenuFilename.getText().toString();
                 String menucompanyid = code;
 
 
                 InsertData take = new InsertData();
-                take.execute(menuname,menuprice,menudescription,menucompanyid);
+                take.execute(menuname,menuprice,menudescription,menucompanyid,menufilename);
 
                 MenuName.setText("");
                 MenuPrice.setText("");
                 MenuDescription.setText("");
+                MenuFilename.setText("");
             }
         });
 
@@ -108,9 +109,10 @@ public class UploadMenuActivity extends AppCompatActivity {
             String menuprice = (String)params[1];
             String menudescription = (String)params[2];
             String menucompanyid = (String)params[3];
+            String menufilename = (String)params[4];
 
             String serverURL = "http://sola0722.cafe24.com/UploadMenu.php";
-            String postParameters = "&menuname=" + menuname + "&price=" + menuprice + "&description=" + menudescription + "&companyid=" + menucompanyid ;
+            String postParameters = "&menuname=" + menuname + "&price=" + menuprice + "&description=" + menudescription + "&companyid=" + menucompanyid + "&filename=" + menufilename ;
 
 
             try {
