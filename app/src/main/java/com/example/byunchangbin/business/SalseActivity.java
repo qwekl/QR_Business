@@ -1,9 +1,13 @@
 package com.example.byunchangbin.business;
 
+import android.app.DatePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,6 +20,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class SalseActivity extends AppCompatActivity {
@@ -23,7 +29,9 @@ public class SalseActivity extends AppCompatActivity {
     private SalseListAdapter adapter;
     private List<SalseList> SalseList;
     private ListView SalseListView;
-    private TextView textSalse;
+    private TextView textSalse, textDate;
+    private Button findButton;
+    int mYear, mMonth, mDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +44,35 @@ public class SalseActivity extends AppCompatActivity {
         adapter = new SalseListAdapter(getApplicationContext(),SalseList);
         SalseListView.setAdapter(adapter);
         textSalse = (TextView)findViewById(R.id.textSalse);
+        textDate = (TextView)findViewById(R.id.btnchangedate);
+        findButton = (Button)findViewById(R.id.findButton);
+
+        //현재 날짜를 가져옴.
+
+        Calendar cal = new GregorianCalendar();
+        mYear = cal.get(Calendar.YEAR);
+        mMonth = cal.get(Calendar.MONTH);
+        mDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        UpdateNow();//화면에 텍스트뷰에 업데이트 해줌.
+
+        //날짜별 매출 현황 조회
+        textDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(SalseActivity.this, mDateSetListener, mYear, mMonth, mDay).show();
+            }
+        });
+
+        findButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SalseList.clear();
+                adapter.notifyDataSetChanged();
+                new BackgroundTask().execute();
+                new SalseSum().execute();
+            }
+        });
 
         //주문 목록 클레스 접근
         new BackgroundTask().execute();
@@ -44,20 +81,41 @@ public class SalseActivity extends AppCompatActivity {
 
     }
 
+    //날짜 대화상자 리스너 부분
+
+    DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    //사용자가 입력한 값을 가져온뒤
+                    mYear = year;
+                    mMonth = monthOfYear;
+                    mDay = dayOfMonth;
+                    //텍스트뷰의 값을 업데이트함
+                    UpdateNow();
+                }
+            };
+
+    void UpdateNow(){
+
+        textDate.setText(String.format("%d-%d-%d", mYear, mMonth + 1, mDay));
+    }
+
     //주문 완료 목록
     class BackgroundTask extends AsyncTask<Void, Void, String> {
 
         String target;
         String code = getIntent().getStringExtra("code");
+        String date = textDate.getText().toString();
+
 
         @Override
         protected void onPreExecute(){
-            target = "http://sola0722.cafe24.com/Salse.php?code="+code;}
+            target = "http://sola0722.cafe24.com/Salse.php?code=";}
 
         @Override
         protected String doInBackground(Void... voids) {
             try{
-                URL url = new URL(target);
+                URL url = new URL(target+code+"&date=" + date);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -113,15 +171,16 @@ public class SalseActivity extends AppCompatActivity {
 
         String target;
         String code = getIntent().getStringExtra("code");
+        String date = textDate.getText().toString();
 
         @Override
         protected void onPreExecute(){
-            target = "http://sola0722.cafe24.com/SalseSum.php?code="+code;}
+            target = "http://sola0722.cafe24.com/SalseSum.php?code=";}
 
         @Override
         protected String doInBackground(Void... voids) {
             try{
-                URL url = new URL(target);
+                URL url = new URL(target+code+"&date=" + date);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
