@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    //상단
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="안녕하세요!"
+            android:text="おはよございます!"
             android:gravity="center"
             android:layout_marginTop="30dp"
             android:textSize="20dp"
@@ -53,7 +53,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="주문다모아"
+            android:text="注文DAMOA"
             android:gravity="center"
             android:textColor="#DF01A5"
             android:textSize="20dp"
@@ -63,14 +63,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="님 환영합니다."
+            android:text="さま、歓迎します."
             android:gravity="center"
             android:textSize="20dp"
             />
     </LinearLayout>
 
 
-    //중단
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -88,7 +88,7 @@
     </LinearLayout>
 
 
-    //하단
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -116,7 +116,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="메뉴"
+                android:text="メニュー"
                 android:textSize="12dp"
                 android:gravity="center"
                 />
@@ -125,7 +125,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="주문 목록"
+                android:text="注文リスト"
                 android:textSize="12dp"
                 android:gravity="center"
                 />
@@ -134,7 +134,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="매출현황"
+                android:text="売上現況"
                 android:textSize="12dp"
                 android:gravity="center"
                 />
