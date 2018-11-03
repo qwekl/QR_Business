@@ -4,25 +4,25 @@
     android:layout_height="match_parent" >
 
     <TableRow>
-        <TextView android:text="전화번호" />
+        <TextView android:text="電話番号" />
         <EditText
             android:id="@+id/et_number"
-            android:hint="여기에 전화번호를 입력합니다."
+            android:hint="ここに電話番号を入力します。"
             android:text=""
             android:inputType="number"/>
     </TableRow>
 
     <TableRow>
-        <TextView android:text="문자메시지" />
+        <TextView android:text="メッセージ" />
         <EditText
             android:id="@+id/et_message"
-            android:hint="여기에 문자메시지를 입력합니다."
+            android:hint="ここにメッセージを入力します。"
             android:text="" />
     </TableRow>
 
     <Button
         android:id="@+id/bt_sms"
         android:onClick="onClickSMS"
-        android:text="문자 보내기" />
+        android:text="メッセージを送る" />
 
 </TableLayout>
