@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="회원가입"
+                android:text="会員加入"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="30dp"
@@ -120,7 +120,7 @@
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="회원가입"
+                android:text="会員加入"
                 android:textSize="20dp"
                 android:background ="@color/colorPrimaryDark"
                 android:textStyle="bold"
