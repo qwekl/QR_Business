@@ -28,7 +28,7 @@
             android:id="@+id/notice_upload2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="공지사항 등록"
+            android:text="お知らせ登録"
             />
 
     </LinearLayout>
