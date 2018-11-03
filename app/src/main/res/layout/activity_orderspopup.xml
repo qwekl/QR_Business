@@ -6,13 +6,13 @@
     android:background="#eeeeee"
     android:orientation="vertical">
 
-    <!-- 타이틀바 -->
+    <!-- タイトル -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="메세지를 전송하시겠습니까?"
+            android:text="メッセージを送りますか"
             android:textSize="20sp"
             android:textColor="#fff"
             android:gravity="center"
@@ -21,7 +21,7 @@
             android:layout_height="53dp" />
 
     </LinearLayout>
-    <!-- //end 타이틀바 -->
+    <!-- //end タイトル -->
 
     <!-- Notice -->
     <LinearLayout
@@ -46,7 +46,7 @@
             android:alpha="0.87"
             android:gravity="center"
             android:layout_marginBottom="3dp"
-            android:text="안녕하세요. 다모아 입니다. 주문하신 상품이 준비되었습니다."
+            android:text="こんにちは。DAMOAです。ご注文の商品が用意されました。"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -59,14 +59,14 @@
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
-    <!-- 닫기 버튼 -->
+
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:text="아니오"
+            android:text="いいえ"
             android:textSize="15sp"
             android:textColor="#000000"
             android:padding="16dp"
@@ -78,7 +78,7 @@
             android:onClick="mOnClose"
             android:id="@+id/cancelButton"/>
         <Button
-            android:text="네"
+            android:text="はい"
             android:textSize="15sp"
             android:textColor="#000000"
             android:padding="16dp"
@@ -90,6 +90,6 @@
             android:onClick="mOnClose"
             android:id="@+id/deleteButton"/>
     </LinearLayout>
-    <!--// 닫기 버튼 -->
+   
 
 </LinearLayout>
