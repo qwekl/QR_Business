@@ -50,7 +50,7 @@ public class NoticeModifiedActivity extends AppCompatActivity{
             new BackgroundTask().execute();
 
 
-            //공지사항 수정 버튼
+            //お知らせの修正ボタン
             modifiedButon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
