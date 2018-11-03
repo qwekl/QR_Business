@@ -35,7 +35,7 @@ public class OrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setTitle("주문현황");
+        setTitle("注文現況");
         setContentView(R.layout.activity_orders);
 
         ordersListView = (ListView)findViewById(R.id.listView);
@@ -47,7 +47,7 @@ public class OrdersActivity extends AppCompatActivity {
         code = getIntent().getStringExtra("code");
 
 
-        //주문 목록 클레스 접근
+        //注文リストクレス接近
         new BackgroundTask().execute();
 
        ordersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -64,7 +64,7 @@ public class OrdersActivity extends AppCompatActivity {
         });
     }
 
-    //서버에서 메뉴 불러오기
+    //サーバーからメニューテーブルを得る
     class BackgroundTask extends AsyncTask<Void, Void, String> {
 
         String target;
