@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="공지사항 등록하기"
+                android:text="お知らせを登録する"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="30dp"
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="제목"
+                android:hint="タイトル"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="작성자" />
+                android:hint="作成した人" />
 
 
             <EditText
@@ -48,14 +48,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="기간" />
+                android:hint="期間" />
 
             <EditText
                 android:id="@+id/notice_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="내용" />
+                android:hint="内容" />
 
 
 
@@ -63,7 +63,7 @@
                 android:id="@+id/upload_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="첨부파일 등록"
+                android:text="パイル"
                 android:textSize="18dp"
                 android:background ="#747474"
                 android:textStyle="bold"
@@ -73,7 +73,7 @@
                 android:id="@+id/registerButton3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="등록하기"
+                android:text="登録する"
                 android:textSize="18dp"
                 android:background ="#747474"
                 android:textStyle="bold"
