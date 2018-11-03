@@ -25,7 +25,7 @@ public class OrdersPopUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //타이틀바 없애기
+        //タイトルバー消す
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_orderspopup);
 
@@ -39,19 +39,19 @@ public class OrdersPopUpActivity extends AppCompatActivity {
         final String phonenember = getIntent().getStringExtra("phonenember");
         txtphonenumberText.setText(phonenember);
 
-        // 팝업 취소 버튼
+        // popupキャンセルボタン
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
 
-                //액티비티(팝업) 닫기
+                //アクティビティ(ポップアップ)消す
                 finish();
             }
         });
 
-        //팝업 주문 확인 버튼
+        //注文確認ボタン
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,8 +63,8 @@ public class OrdersPopUpActivity extends AppCompatActivity {
                 String t = txtText.getText().toString();
                 intent1.putExtra("sms_body", t);
                 startActivity(intent1);
-                Toast.makeText(getApplicationContext(),"전송버튼을 눌러 주세요.", Toast.LENGTH_LONG).show();
-                //액티비티(팝업) 닫기
+                Toast.makeText(getApplicationContext(),"転送ボタンを押してください。", Toast.LENGTH_LONG).show();
+                //アクティビティ(ポップアップ)消す
                 new OrdersDelete().execute();
                 finish();
             }
@@ -77,7 +77,7 @@ public class OrdersPopUpActivity extends AppCompatActivity {
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //바깥레이어 클릭시 안닫히게
+        //Popupウィンドー以外の空間クリック時、外の画面に転換されないようにする関数
         if(event.getAction()== MotionEvent.ACTION_OUTSIDE){
             return false;
         }
@@ -86,11 +86,11 @@ public class OrdersPopUpActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //안드로이드 백버튼 막기
+        //Popup時、Android 戻るボタンがクリックできないようにする関数
         return;
     }
 
-    //주문 완료 메뉴 지우기
+    //注文済みのメニュー消す
     class OrdersDelete extends AsyncTask<Void, Void, String> {
 
         String target;
@@ -140,7 +140,7 @@ public class OrdersPopUpActivity extends AppCompatActivity {
         }
     }
 
-    //매출 목록으로 전송 클래스
+    //売上リストで注文メニューを送る関数
     class Salse extends AsyncTask<Void, Void, String> {
 
         String target;
