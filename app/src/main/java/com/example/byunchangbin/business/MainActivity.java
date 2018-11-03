@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //매출 현황 목록 버튼
+        //売上現況リストボタン
         salseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
