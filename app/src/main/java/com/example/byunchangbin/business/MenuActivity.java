@@ -34,7 +34,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setTitle("메뉴목록");
+        setTitle("メニューリスト");
         setContentView(R.layout.activity_menu);
 
         menuListView = (ListView)findViewById(R.id.listView);
@@ -45,7 +45,7 @@ public class MenuActivity extends AppCompatActivity {
 
         final String code = getIntent().getStringExtra("code");
 
-        //메뉴 클레스 접근
+        //メニューのクラスアクセス
         new BackgroundTask().execute();
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,7 +63,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-        //메뉴 등록 버튼
+         //メニュー登録ボタン
         MenuuploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +75,7 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
-    //서버에서 메뉴 불러오기
+    //サーバーからメニューテーブルを得る
     class BackgroundTask extends AsyncTask<Void, Void, String> {
 
         String target;
