@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="제목"
+            android:text="タイトル"
             android:textSize="20dp"
             android:gravity="center"
             />
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
-            android:text="선문대학교"
+            android:text="鮮文大学校"
             android:textSize="20dp"
             android:id="@+id/noticetitle"
             />
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="작성자"
+            android:text="作成した人"
             android:textSize="20dp"
             android:gravity="center"
             />
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
-            android:text="선문 대학교"
+            android:text="鮮文大学校"
             android:textSize="20dp"
             android:id="@+id/noticename"
             />
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="작성일"
+            android:text="作成した日"
             android:textSize="20dp"
             android:gravity="center"
             />
@@ -101,7 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:text="첨부파일"
+            android:text="ファイル"
             android:textSize="20dp"
             android:gravity="center"
             />
@@ -123,7 +123,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="2011244070 김정민"
+            android:text="2011244070 名前"
             android:textSize="15dp"
             android:layout_gravity="center"
             android:id="@+id/noticedetails"/>
@@ -139,14 +139,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="수정"
+            android:text="変更"
             android:id="@+id/modified_button"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="삭제"
+            android:text="削除"
             android:id="@+id/delete_button"/>
 
 
